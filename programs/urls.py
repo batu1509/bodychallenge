@@ -1,10 +1,15 @@
 from django.urls import path, include
-from programs.views import ProfilImageUpdateView, MuscleViewSet, ProfilViewSet, MuscleGroupViewSet, WorkoutViewSet, ExerciseViewSet, LevelViewSet, GenderViewSet, repTypeViewSet, RoutineViewSet, EquipmentViewSet, RoutineGoalViewSet, RoutineTypeViewSet, LinearWorkoutViewSet, periodizationViewSet, CircularWorkoutViewSet, WorkoutExerciseViewSet, ExerciseTypeViewSet, ExerciseMechanicViewSet, WorkoutExerciseSetViewSet, WorkoutExerciseSetWithRepsViewSet, IntervalWorkoutExerciseSetViewSet
+from programs.views import ProfilImageUpdateView, MeasurementUnitViewSet, MeasurementParameterViewSet, SavedRoutineViewSet, BodyVitalsLogViewSet, WeightLevelViewSet, HeightLevelViewSet, ActivityLevelViewSet, MuscleViewSet, ProfilViewSet, MuscleGroupViewSet, WorkoutViewSet, ExerciseViewSet, LevelViewSet, GenderViewSet, repTypeViewSet, RoutineViewSet, EquipmentViewSet, RoutineGoalViewSet, RoutineTypeViewSet, LinearWorkoutViewSet, periodizationViewSet, CircularWorkoutViewSet, WorkoutExerciseViewSet, ExerciseTypeViewSet, ExerciseMechanicViewSet, WorkoutExerciseSetViewSet, WorkoutExerciseSetWithRepsViewSet, IntervalWorkoutExerciseSetViewSet
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register(r'muscle',MuscleViewSet)
 router.register(r'profil',ProfilViewSet)
+router.register(r'activityLevel',ActivityLevelViewSet)
+router.register(r'measurementUnit',MeasurementUnitViewSet)
+router.register(r'measurementParameter',MeasurementParameterViewSet)
+router.register(r'savedRoutine',SavedRoutineViewSet)
+router.register(r'bodyVitalsLog',BodyVitalsLogViewSet)
 router.register(r'muscleGroup',MuscleGroupViewSet)
 router.register(r'workout',WorkoutViewSet)
 router.register(r'exercise',ExerciseViewSet)
@@ -24,6 +29,8 @@ router.register(r'exerciseMechanic',ExerciseMechanicViewSet)
 router.register(r'workoutExerciseSet',WorkoutExerciseSetViewSet)
 router.register(r'workoutExerciseSetWithReps',WorkoutExerciseSetWithRepsViewSet)
 router.register(r'intervalWorkoutExerciseSet',IntervalWorkoutExerciseSetViewSet)
+router.register(r'weight',WeightLevelViewSet)
+router.register(r'height',HeightLevelViewSet)
 
 
 

@@ -77,16 +77,6 @@ class Exercise(models.Model):
 
     def __str__(self):
         return self.name
-    
-    def save(self, *args, **kwargs):
-        ## IMAGE RESIZE
-        super().save(*args, **kwargs)
-        if self.image:
-            img = Image.open(self.image.path)
-            if img.height > 600 or img.width > 600:
-                output_size = (600,600)
-                img.thumbnail(output_size)
-                img.save(self.image.path)
 
 
 class Gender(models.Model):
@@ -110,17 +100,7 @@ class Routine(models.Model):
 
 
     def __str__(self):
-        return self.name
-
-    def save(self, *args, **kwargs):
-        ## IMAGE RESIZE
-        super().save(*args, **kwargs)
-        if self.image:
-            img = Image.open(self.image.path)
-            if img.height > 600 or img.width > 600:
-                output_size = (600,600)
-                img.thumbnail(output_size)
-                img.save(self.image.path)    
+        return self.name  
 
 class periodization(models.Model):
 
@@ -151,10 +131,12 @@ class CircularWorkout(models.Model):
 
 class WorkoutExercise(models.Model):
 
+    # id =  models.AutoField(primary_key=True)
     workoutId = models.ForeignKey(Workout, on_delete=models.CASCADE, null=True)
     workoutTypeId = models.ForeignKey(LinearWorkout, on_delete=models.CASCADE, null=True)
     exerciseId = models.ForeignKey(Exercise, on_delete=models.CASCADE, null=True)
     restTime = models.IntegerField(null=True, blank=True)
+    linkedExercise = models.IntegerField(null=True)
 
 class WorkoutExerciseSet(models.Model):
 

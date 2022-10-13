@@ -1,14 +1,55 @@
 from rest_framework import serializers
-from users.models import Profile
+from users.models import ActivityLevel, BodyVitalsLog, MeasurementParameter, MeasurementUnit, Profile, BodyWeight, BodyHeight, SavedRoutine
 from django.contrib.auth.models import User
 from django.utils import timezone
 from dj_rest_auth.registration.serializers import RegisterSerializer
 
+class MeasurementUnitSerializer(serializers.ModelSerializer):
 
+    class Meta:
+        model = MeasurementUnit
+        fields = '__all__'
+
+class MeasurementParameterSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = MeasurementParameter
+        fields = '__all__'
+
+class BodyVitalsLogSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = BodyVitalsLog
+        fields = '__all__'
+
+class SavedRoutineSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = SavedRoutine
+        fields = '__all__'
+
+class BodyWeightSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = BodyWeight
+        fields = '__all__'
+
+class BodyHeightSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = BodyHeight
+        fields = '__all__'
+
+
+class ActivityLevelSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ActivityLevel
+        fields = '__all__'
 
 class ProfileSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField(read_only=True)
-    image = serializers.ImageField(read_only=True)
+    profilePhoto = serializers.ImageField(read_only=True)
     
     class Meta:
         model = Profile
@@ -18,7 +59,7 @@ class ProfileImageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ['image']
+        fields = ['profilePhoto']
     
 class CustomRegisterSerializer(RegisterSerializer):
     first_name = serializers.CharField()

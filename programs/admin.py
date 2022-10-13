@@ -1,5 +1,5 @@
 from django.contrib import admin
-from users.models import Profile
+from users.models import Profile, ActivityLevel, BodyWeight, BodyHeight, BodyVitalsLog, MeasurementParameter, MeasurementUnit, SavedRoutine
 from programs.models import Muscle, MuscleGroup, Level, Routine, RoutineGoal, RoutineType, Equipment, Exercise, ExerciseMechanic, ExerciseType, Workout, WorkoutExercise, WorkoutExerciseSet, WorkoutExerciseSetWithReps, Gender, periodization, LinearWorkout, CircularWorkout, repType, IntervalWorkoutExerciseSet
 
 # Register your models here.
@@ -11,6 +11,13 @@ from programs.models import Muscle, MuscleGroup, Level, Routine, RoutineGoal, Ro
 #     list_filter = ("",)
 
 admin.site.register(Profile)
+admin.site.register(ActivityLevel)
+admin.site.register(BodyWeight)
+admin.site.register(BodyHeight)
+admin.site.register(SavedRoutine)
+admin.site.register(MeasurementUnit)
+admin.site.register(MeasurementParameter)
+admin.site.register(BodyVitalsLog)
 
 admin.site.register(Muscle)
 admin.site.register(MuscleGroup)
