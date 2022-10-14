@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'users.apps.UsersConfig',
     'programs.apps.ProgramsConfig',
+    # 'posts.apps.PostsConfig',
 
 ]
 

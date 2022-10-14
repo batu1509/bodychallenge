@@ -13,7 +13,7 @@ class MuscleGroup(models.Model):
 
 class Muscle(models.Model):
 
-    name = models.CharField(max_length=255, null=True)
+    name = models.CharField(max_length=255, null=True )
     group = models.ForeignKey(MuscleGroup, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
