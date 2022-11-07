@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from users.models import ActivityLevel, BodyVitalsLog, MeasurementParameter, MeasurementUnit, Profile, BodyWeight, BodyHeight, SavedRoutine
+from users.models import ActivityLevel, BodyVitalsLog, MeasurementParameter, MeasurementUnit, Profile, SavedRoutine
 from django.contrib.auth.models import User
 from django.utils import timezone
 from dj_rest_auth.registration.serializers import RegisterSerializer
@@ -28,17 +28,17 @@ class SavedRoutineSerializer(serializers.ModelSerializer):
         model = SavedRoutine
         fields = '__all__'
 
-class BodyWeightSerializer(serializers.ModelSerializer):
+# class BodyWeightSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = BodyWeight
-        fields = '__all__'
+#     class Meta:
+#         model = BodyWeight
+#         fields = '__all__'
 
-class BodyHeightSerializer(serializers.ModelSerializer):
+# class BodyHeightSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = BodyHeight
-        fields = '__all__'
+#     class Meta:
+#         model = BodyHeight
+#         fields = '__all__'
 
 
 class ActivityLevelSerializer(serializers.ModelSerializer):

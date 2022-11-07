@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+  <h2 class="text-center mt-3">Go to relvant section</h2>
+
+  <div class="d-flex flex-column align-items-center">
+    <a class="mt-5" href="{% url 'moderation:reported_questions' %}">Flagged Questions</a>
+    <a class="mt-5" href="#">Flagged Answers</a>
+    <a class="mt-5" href="#">Flagged Question Comments</a>
+    <a class="mt-5" href="#">Flagged Answer Comments</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="py-3 text-center">
+
+        {% if user.is_authenticated %}
+            <h2 class="mb-4">Hi {{ request.user }}, welcome to your weekly workout planner</h2>
+            <h5 class="mb-4">What would you like to do?</h5>
+            <a href="{% url 'view_plans' %}" class="link-button">View my current workout plans</a>
+            <a href="{% url 'choose_date' %}" class="link-button ms-4 space-button">Add a new plan</a>
+            
+        {% else %}
+        
+            <h3 class="mb-4">To create your plan:</h3>
+            <a href="{% url 'account_login' %}" class="link-button">Log in</a> 
+            <span class="mx-2">or</span> 
+            <a href="{% url 'account_signup' %}" class="link-button">Sign up</a>
+            <hr>
+            <h3>How does it work?</h3>
+            <p class="mx-4">For each day of the week write what type of training you'd like to do in the morning or evening.<br>
+            Don't forget to have some rest days!</p>
+            <br/>
+            <div class="table-responsive">
+                <table class="table align-middle mb-5">
+                    <thead>
+                      <tr>
+                          <th>-</th>
+                          <th>Monday</th>
+                          <th>Tuesday</th>
+                          <th>Wednesday</th>
+                          <th>Thursday</th>
+                          <th>Friday</th>
+                          <th>Saturday</th>
+                          <th>Sunday</th>
+                        </tr>
+                    </thead>
+                  
+                    <tbody>
+                        <tr>
+                            <th scope="row" rowspan="2">AM</th>
+                            <td class="border-0 left-border"></td>
+                            <td class="border-0 left-border"></td>
+                            <td class="border-0 left-border">Home HIIT</td>
+                            <td class="border-0 left-border">Back</td>
+                            <td class="border-0 left-border"></td>
+                            <td class="border-0 left-border">Morning walk</td>
+                            <td class="border-0 left-border">Relax</td>
+                        </tr>
+                        <tr>
+                            <td class="left-border separation-line"></td>
+                            <td class="left-border separation-line"></td>
+                            <td class="left-border separation-line"></td>
+                            <td class="left-border separation-line">Triceps</td>
+                            <td class="left-border separation-line"></td>
+                            <td class="left-border separation-line"></td>
+                            <td class="left-border separation-line"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" rowspan="2">PM</th>
+                            <td class="border-0 left-border">Arms</td>
+                            <td class="border-0 left-border">Legs & Glutes</td>
+                            <td class="border-0 left-border">Volleyball</td>
+                            <td class="border-0 left-border"></td>
+                            <td class="border-0 left-border">Legs & Glutes</td>
+                            <td class="border-0 left-border">Volleyball</td>
+                            <td class="border-0 left-border"></td>
+                        </tr>
+                        <tr>
+                            <td class="left-border">Biceps</td>
+                            <td class="left-border">ABS</td>
+                            <td class="left-border"></td>
+                            <td class="left-border"></td>
+                            <td class="left-border">ABS</td>
+                            <td class="left-border"></td>
+                            <td class="left-border"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

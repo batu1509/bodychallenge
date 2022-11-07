@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<div class="py-3 container"> 
+    <div class="row d-flex justify-content-center mb-8">
+        <div class="text-center">
+
+        <img src="{{ user.profil.profilePhoto.url }}" style="width: 100px;height:100px;object-fit: cover;border-radius:100px ;">
+        <div class="media-body pl-2 pt-2">
+            <div class="ml-4 pl-1 mt-2">
+                <h2 >{{user.username}}</h2>
+                {% if user.email %}
+                <small>({{user.email}})</small>
+                {% endif %}
+    </div>
+</div>
+</div>
+</div>
+            
+   <div class="py-3 container"> 
+        <div class="row d-flex justify-content-center mb-5">
+            <div class="col-12 col-md-8 col-lg-6 border py-3">
+                <h4 style="color:red" class="pb-1">Profile Details</h4>
+
+                <small class="fa fa-check"> <span style="color:blue">Bio : </span>{{user.profil.bio}}</small><br>
+                <small class="fa fa-check"> <span style="color:blue">Gender : </span>{{user.profil.gender}}</small><br>
+                <small class="fa fa-check"> <span style="color:blue">Date of birth : </span>{{user.profil.date_of_birth}}</small><br>
+                <small class="fa fa-check"> <span style="color:blue">Weight : </span>{{user.profil.weight}}</small><br>
+                <small class="fa fa-check"> <span style="color:blue">Height : </span>{{user.profil.height}}</small>
+            </div>
+            
+            <div class="text-center">
+                <a href=""  class="link-button mt-3">Update profile</a>
+            </div>
+        </div>
+    </div> 
+
+{% endblock content %}

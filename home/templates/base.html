@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <title>Body Challenge</title>
+</head>
+<body>
+
+  <div id="page-container">
+    <!-- Navbar-->
+    <nav class="navbar navbar-expand-md navbar-light bg-light py-3 border-bottom">
+      <div class="container">
+        <div class="navbar-brand">
+          <img src="static/image/bodyiconiki.jpg" width="35" height="35">
+          BODY CHALLENGE
+        </div>
+        <button class="navbar-toggler d-flex d-md-none flex-column justify-content-around collapsed" type="button"
+          data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="toggler-icon top-bar"></span>
+          <span class="toggler-icon middle-bar"></span>
+          <span class="toggler-icon bottom-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto text-center">
+            <li class="nav-item">
+              <a class="nav-link" href="/home"><i class="fa fa-home"></i>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/questionanswer">Body Questions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/planner">Workout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/exercises">All Exercises</a>
+            </li>
+
+
+            {% if request.user.is_authenticated %}
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                {{user.username}}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'profile' user.username%}">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+
+              </ul>
+            </li>
+
+            {% else %}
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Sign in / Sign up
+              </a>
+              <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign up</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_login' %}">Sign in</a></li>
+              </ul>
+            </li>
+
+            {% endif %}
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+
+    {% if messages %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          {% for message in messages %}
+          <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+            {{ message | safe }}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <div id="content-wrap">
+      {% block content %}
+      {% endblock %}
+    </div>
+
+    <footer class="text-center text-white">
+      <div class="container">
+        <div class="my-2">
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="{% url 'contact' %}" role="button"
+            aria-label="Contact Us"><i class="far fa-comment"></i></a><br>
+
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href=""
+            role="button" target="_blank" aria-label="Visit us on LinkedIn (opens in new tab)"><i
+              class="fab fa-linkedin"></i></a>
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href=""
+            role="button" target="_blank" aria-label="Visit us on LinkedIn (opens in new tab)"><i
+              class="fab fa-instagram"></i></a>
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href=""
+            role="button" target="_blank" aria-label="Visit us on LinkedIn (opens in new tab)"><i
+              class="fab fa-twitter"></i></a>
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href=""
+            role="button" target="_blank" aria-label="Visit us on LinkedIn (opens in new tab)"><i
+              class="fab fa-github"></i></a>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="text-center text-dark p-2 copyright">
+        batu1509
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://kit.fontawesome.com/b75c116a85.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="{% static 'script/script.js' %}"></script>
+
+</body>
+</html>

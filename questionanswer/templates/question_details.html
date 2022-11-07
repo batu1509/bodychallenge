@@ -1,0 +1,178 @@
+{% extends 'questionanswer.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% static 'css/question_details.css' %}">
+  <script src="https://kit.fontawesome.com/320ceecbe5.js" crossorigin="anonymous"></script>
+{% endblock stylesheets%}
+
+{% block content %}
+<div class="question_details_container">
+  <div class="question">
+    <div class="question_header">
+      <h3 class="question_title">{{ question.title }}</h3>
+      <a class="question_header__button" href="{% url 'questionanswer:createquestion' %}">Ask Question</a>
+    </div>
+    <hr />
+
+    <div class="question_info">
+      <div class="question_votes">
+        <!-- Conditionally add classes to buttons depending on current user has voted or not -->
+        {% if request.user in question.questionvote.users_upvoted.all %}
+          <div onclick="handleQuestionVote(this, '{{ question.id }}')" data-action="delete" class="vote_button user_voted">
+            <i class="fas fa-caret-up"></i>
+          </div>
+          
+        {% else %}
+          <div onclick="handleQuestionVote(this, '{{ question.id }}')" data-action="up" class="vote_button">
+            <i class="fas fa-caret-up"></i>        
+          </div>
+        {% endif %}
+        
+        <div class="question_votes__count">
+          {{question.questionvote.votes}}
+        </div>
+        
+        {% if request.user in question.questionvote.users_downvoted.all %}
+          <div onclick="handleQuestionVote(this, '{{ question.id }}')" data-action="delete" class="vote_button user_voted">
+            <i class="fas fa-caret-down" ></i>
+          </div>
+        {% else %}
+          <div onclick="handleQuestionVote(this, '{{ question.id }}')" data-action="down" class="vote_button">
+            <i class="fas fa-caret-down"></i>
+          </div> 
+        {% endif %}
+        
+      </div>
+      <div class="question_content">
+        {{ question.content | safe }}
+      </div>
+    </div>
+    
+    <div class="question_extra_info">
+      <div class="question_links">
+        {% if user.is_authenticated and user == question.asked_by %}
+          <a class="question_links__link" href="{% url 'questionanswer:edit_question' question.id %}">Edit</a>
+          <a class="question_links__link" href="{% url 'questionanswer:delete_question' question.id %}">Delete</a>
+        {% endif %}
+          <a class="question_links__link" href="{% url 'questionanswer:report_question' question.id %}">Report</a>
+      </div>
+
+      <div class="question_timestamp">asked {{ question.created_at }}</div>
+
+      <div class="question_author">{{ question.asked_by.get_full_name }}</div>
+
+    </div>
+
+    {% comment %} <div class="question_comments">
+      {% if question.questioncomment_set.all %}
+        {% for comment in question.questioncomment_set.all %}
+          <div class="question_comment">
+            <div class="question_comment--text">
+              {{ comment.content }}
+            </div>
+            {% if comment.author == request.user %}
+              <a href="{% url 'questionanswer:delete_question_comment' comment.id %}" class="question_comment--delete">Delete</a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>There are no comments for this question. </p>
+      {% endif %}
+      <div class="question_comment_form__container">
+        <form class="question_comment_form" action="{% url 'questionanswer:create_question_comment' question.id %}" method="POST">
+          {% csrf_token %}
+
+          {{ question_comment_form | crispy }}
+
+          <button class="btn btn-primary" type="submit">Submit Comment</button>
+        </form>
+      </div>
+    </div>
+  </div> {% endcomment %}
+
+  <h4 class="answer_count_header">{{ answers.all.count }} Answers</h4>
+
+  <div class="answers_container">
+    {% if not answers %}
+      <p>There are no answers to this question yet. </p>
+    {% else %}
+      {% for answer in answers %}
+        <div class="answer">
+          <div class="answer_info">
+            <div class="answer_votes">
+              <!-- Conditionally add classes to buttons depending on current user has voted or not -->
+              {% if request.user in answer.answervote.users_upvoted.all %}
+                <div onclick="handleAnswerVote(this, '{{ answer.id }}')" data-action="delete" class="vote_button user_voted">
+                  <i class="fas fa-caret-up"></i>
+                </div>
+              {% else %}
+                <div onclick="handleAnswerVote(this, '{{ answer.id }}')" data-action="up" class="vote_button">
+                  <i class="fas fa-caret-up"></i>        
+                </div>
+              {% endif %}
+              
+              <div class="answer_votes__count">
+                {{answer.answervote.votes}}
+              </div>
+              
+              {% if request.user in answer.answervote.users_downvoted.all %}
+                <div onclick="handleAnswerVote(this, '{{ answer.id }}')" data-action="delete" class="vote_button user_voted">
+                  <i class="fas fa-caret-down" ></i>
+                </div>
+              {% else %}
+                <div onclick="handleAnswerVote(this, '{{ answer.id }}')" data-action="down" class="vote_button">
+                  <i class="fas fa-caret-down"></i>
+                </div> 
+              {% endif %}
+              
+            </div>
+
+            <div class="answer_content">
+              {{ answer.content | safe }}
+            </div>
+          </div>
+          <div class="answer_extra_info">
+            <div class="answer_links">
+              {% if user.is_authenticated and user == answer.answered_by %}
+                <a class="answer_links__link" href="{% url 'questionanswer:edit_answer' question.id answer.id %}">Edit</a>
+                <a class="answer_links__link" href="{% url 'questionanswer:delete_answer' question.id answer.id %}">Delete</a>
+              {% endif %}
+                <a class="answer_links__link" href="{% url 'questionanswer:report_answer' answer.id %}">Report</a>
+            </div>
+
+            <div class="answer_timestamp">answered {{answer.created_at }} </div>
+
+            <div class="answer_author">{{ answer.answered_by.get_full_name }}</div>
+          </div>
+        </div>  
+        <hr />
+      {% endfor %}
+    {% endif%}
+  </div>
+
+  <div class="answer_form__container">
+    <form class="answer_form simplemde_form" action="{% url 'questionanswer:create_answer' question.id %}" method="POST">
+      {% csrf_token %}
+  
+      {{ answer_creation_form | crispy }}
+  
+      <button class="btn btn-primary" type="submit">Submit answer</button>
+    </form>
+  </div>
+  
+</div>
+{% endblock content %}
+
+
+{% block javascript %}
+  <script>
+    var csrftoken = '{{ csrf_token }}';
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+  <script src="{% static 'js/simplemdeConfig.js' %}"></script>
+  <script src="{% static 'js/voteQuestion.js' %}"></script>
+  <script src="{% static 'js/voteAnswer.js' %}"></script>
+{% endblock javascript %}

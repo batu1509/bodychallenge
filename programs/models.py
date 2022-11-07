@@ -14,7 +14,7 @@ class MuscleGroup(models.Model):
 class Muscle(models.Model):
 
     name = models.CharField(max_length=255, null=True )
-    group = models.ForeignKey(MuscleGroup, on_delete=models.CASCADE, null=True)
+    # group = models.ForeignKey(MuscleGroup, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
@@ -65,15 +65,15 @@ class Exercise(models.Model):
 
     name = models.CharField(max_length=255, null=True)
     description = models.CharField(max_length=255, null=True)
-    image = models.ImageField(null=True, blank=True, upload_to = 'exercise_photos/%Y/%m/')
-    video = models.CharField(max_length=255, null=True)
-    primaryTargetMuscles = models.ManyToManyField(Muscle, blank=False, related_name='primaryTargetMuscles')
-    secondaryTargetMuscles = models.ManyToManyField(Muscle, blank=False, related_name='secondaryTargetMuscles')
+    image = models.ImageField(null=True, blank=True, default='static/image/bodydefault.png', upload_to = 'exercise_photos/%Y/%m/')
+    video = models.CharField(max_length=255, null=True, blank=True)
+    primaryTargetMuscles = models.ForeignKey(Muscle, on_delete=models.CASCADE, null=True, blank=True, related_name='primaryTargetMuscles')
+    # secondaryTargetMuscles = models.ForeignKey(MuscleGroup, on_delete=models.CASCADE, null=True, blank=True, related_name='secondaryTargetMuscles')
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE, null=True)
     level = models.ForeignKey(Level, on_delete=models.CASCADE, null=True)
     type = models.ForeignKey(ExerciseType, on_delete=models.CASCADE, null=True)
     mechanics = models.ForeignKey(ExerciseMechanic, on_delete=models.CASCADE, null=True)
-    intervalOnly = models.BooleanField(null=True)
+    intervalOnly = models.BooleanField(null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -109,10 +109,17 @@ class periodization(models.Model):
     def __str__(self):
         return self.name
 
+class WorkoutTime(models.Model):
+    workout_time_name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.workout_time_name
+
 class Workout(models.Model):
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='workout_plan', null=True)
     name = models.CharField(max_length=255, null=True)
-    day = models.IntegerField(null=True)
+    day = models.DateField(null=True)
     periodization = models.ForeignKey(periodization, on_delete=models.CASCADE, null=True)
     routineld = models.ForeignKey(Routine, on_delete=models.CASCADE, null=True)
 

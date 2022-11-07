@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% load exercises_tags %}
+
+ <section class="py-3 text-center container">
+    <div class="row py-lg-3">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Exercises</h1>
+            <p class="lead text-muted">Get inspired...</p>
+            <br/>               
+        </div>
+        <!-- Collapsible filters menu -->
+        {% comment %} <a href="#"><div class="expand hide-div mb-3 link-button">Find an exercise</div></a> {% endcomment %}
+        
+        <div class="filter-exercises show-filters">
+            <form method="GET">
+                {{ filtered_exercises.form.as_p }}
+                
+                <div class="group-search-buttons py-4">
+                    <button type="submit" class="button">Search</button>
+                    <a href="{% url 'exercises' %}" class="link-button ms-3">Clear</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+    <div class="card py-5 bg-light">
+        <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+            
+            <!-- Exercise entries -->
+            <div class="col">
+                {% for exercise in exercise_page_obj %}
+
+                    <div class="card mb-3 h-100">
+                            <img src=" {{ exercise.image.url }} " class="card-img-top" alt="Image of {{ exercise.name }} exercise." style="width: 300px;height:180px;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ exercise }}</h5>
+                                <p class="card-text">Muscle: {{ exercise.primaryTargetMuscles}} <br/>
+                                Level: {{ exercise.level }} <br/>
+                                Type: {{ exercise.type }} <br/>
+                                Equipment: {{ exercise.equipment }} <br/>
+                                Mechanics: {{ exercise.mechanics }} <br/>
+                                {% comment %} İntervalOnly: {{ exercise.intervalOnly }} {% endcomment %}
+                                </p>
+                            </div>
+                            <div class="text-center py-2">
+                              
+                                <div class="btn-group">
+                                    <a href="{% url 'show_exercise' exercise.id %}" class="btn btn-sm btn-outline-secondary">Details</a>
+                                </div>
+                            </div>
+                    </div>
+            </div>
+            <div class="col">
+                {% endfor %}
+        </div>
+    </div>
+  </div>
+
+    <!-- Exercises pagination -->   
+    <nav aria-label="Exercises navigation">
+      <ul class="pagination justify-content-center pt-3">
+        {% if exercise_page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="{% my_url 1 'page' request.GET.urlencode %}">&laquo;&laquo;</a>
+        </li>
+        <li>
+          <a class="page-link" href="{% my_url exercise_page_obj.previous_page_number 'page' request.GET.urlencode %}">&laquo;</a>
+        </li>
+        {% endif %}
+
+        <li class="page-link pages-display">
+          Page {{ exercise_page_obj.number }} of {{ exercise_page_obj.paginator.num_pages }}
+        </li>
+        {% if exercise_page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="{% my_url exercise_page_obj.next_page_number 'page' request.GET.urlencode %}">&raquo;</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="{% my_url exercise_page_obj.paginator.num_pages 'page' request.GET.urlencode %}">&raquo;&raquo;</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+
+  </div>
+{% endblock %}
+

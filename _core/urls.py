@@ -15,15 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from users import views as user_views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('programs.urls')),
+    path('questionanswer', include('questionanswer.urls')),
+    path('users', include('users.urls')),
+    path('home', include('home.urls')),
+    path('', include('programs.urls')),
+    path("accounts/", include("allauth.urls")),
+    path('__debug__/', include('debug_toolbar.urls')),
+
+    
     path('api-auth/', include('rest_framework.urls')), # Browsable api sayfası için
     path('api/dj-rest-auth/', include('dj_rest_auth.urls')), # dj-rest-auth ile gelen endpointlerimiz için
     path('api/dj-rest-auth/registration', include('dj_rest_auth.registration.urls')), # settings.py de 'rest.auth.registration' eklemiştik
-    # path('posts/',include("posts.urls")),
-    # path('users/',include("users.urls")),
     # path('api/dj-rest-auth/facebook/', FacebookLogin.as_view(), name='fb_login'),
 
 ]

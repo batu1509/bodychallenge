@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from programs.models import Muscle, MuscleGroup, Level, Routine, RoutineGoal, RoutineType, Equipment, Exercise, ExerciseMechanic, ExerciseType, Workout, WorkoutExercise, WorkoutExerciseSet, WorkoutExerciseSetWithReps, Gender, periodization, LinearWorkout, CircularWorkout, repType, IntervalWorkoutExerciseSet
 
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.utils import timezone
 
 

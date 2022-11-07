@@ -1,0 +1,100 @@
+.welcome_header {
+    margin: 20px auto 10px auto;
+    padding: 10px 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+  }
+  
+  .welcome_header__button {
+    align-self: center;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #060606;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .welcome_header__button:hover {
+    text-decoration: none;
+    background-color: #060606;
+    color: blue;
+  }
+  
+  .questions_container {
+    width: 900px;
+    margin: 20px auto;
+    border: 1px solid gainsboro;
+  }
+  
+  .question {
+    display: flex;
+    padding: 8px;
+    border-bottom: 1px solid gainsboro;
+  }
+  
+  .question__votes_container {
+    display: flex;
+  }
+  
+  .question__votes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .question__answers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .question__summary {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 15px;
+    width: 100%;
+  }
+  
+  .question__title {
+    font-size: 20px;
+    color: #000000;
+  }
+  
+  .question__time_and_author {
+    align-self: flex-end;
+  }
+  
+  .pagination_buttons_container {
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+  }
+  
+  .pagination_button {
+    display: inline-block;
+    padding: 8px 15px;
+    border: 1px solid gainsboro;
+    border-radius: 4px;
+    margin: 0px 8px;
+    color: black;
+  }
+  
+  .pagination_button:hover {
+    text-decoration: none;
+    color: black;
+    background-color: rgb(220, 220, 220);
+  }
+  
+  .current_pagination_button {
+    background-color: #000000;
+    color: white;
+  }
+  
+  .current_pagination_button:hover {
+    background-color: #020203;
+    color: white;
+  }

@@ -1,0 +1,103 @@
+.question_details_container {
+    max-width: 1000px;
+    margin: 75px auto;
+    border: 1.5px solid gainsboro;
+    padding: 30px 35px 25px 35px;
+    background-color: white; /* so that background image of body doesn't show up */
+  }
+  
+  .question_header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+  }
+  
+  .question_header__button {
+    align-self: center;
+    display: inline-block;
+    padding: 6px;
+    border-radius: 4px;
+    background-color: #0f3559;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .question_header__button:hover {
+    text-decoration: none;
+    background-color: #124a7e;
+    color: white;
+  }
+  
+  .question_info {
+    display: flex;
+  }
+  
+  .question_votes, .answer_votes {
+    padding: 0px 40px 20px 15px;
+    margin-top: -30px;
+  }
+  
+  .question_votes__count, .answer_votes__count {
+    color: rgb(190, 190, 190);
+    font-size: 30px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+  
+  .question_extra_info, .answer_extra_info {
+    margin-left: 65px;
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .question_links__link, .answer_links__link {
+    padding: 5px;
+    color: rgb(177, 177, 177);
+    text-decoration: none;
+  }
+  
+  .question_links__linkL:hover, .answer_links__link:hover {
+    padding: 5px;
+    color: gainsboro;
+    text-decoration: none;
+  }
+  
+  .question_timestamp, .answer_timestamp {
+    font-size: 12px;
+    color: rgb(159, 196, 252);
+    align-self: center;
+  }
+  
+  .vote_button {
+    color: rgb(202, 202, 202);
+    font-size: 60px;
+  }
+  
+  .vote_button:hover {
+    cursor: pointer;
+  }
+  
+  .vote_button.user_voted {
+    color: #124a7e;
+  }
+  
+  
+  .answer_count_header {
+    padding-left: 15px;
+    margin: 30px 0px;
+  }
+  
+  .answer {
+    padding: 20px 0px;
+  }
+  
+  .answer_info {
+    display: flex;
+  }
+  
+  form {
+    margin-top: 70px;
+  }

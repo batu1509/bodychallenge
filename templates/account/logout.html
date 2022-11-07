@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+
+<div class="py-3 text-center">
+
+<p>{% trans 'Are you sure you want to log out?' %}</p>
+
+  <form method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+    {% endif %}
+    
+    <button type="submit" class="button">Log out  <i class="fa-solid fa-right-from-bracket"></i></button>
+    
+  </form>
+
+</div>
+{% endblock %}

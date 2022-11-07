@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load bootstrap_tags %}
+
+{% block content %}
+<div class="container">
+  
+  <div class="row d-flex justify-content-center mb-5">
+    <div class="col-12 col-md-8 col-lg-4">
+      <div class="card rounded-3 text-black">
+        <div class="row g-0">
+          <div class="col-lg-12">
+            <div class="card-body p-md-4 mx-md-4">
+              <h4 class="text-center">BodyChallenge</h4>
+
+                <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                    {% csrf_token %}
+                      {{ form|as_bootstrap }}
+                        {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                        {% endif %}
+
+                        <div class="form-outline my-4">
+                          <label>password requirements:</label>
+                          <div class="bg-light p-3 criteria-font-size">
+                              <i class="fa-solid fa-check"></i> MUST contain at least 8 characters (12+ recommended)
+                              <br>
+                              <i class="fa-solid fa-check"></i> MUST contain at least one uppercase letter<br>
+                              <i class="fa-solid fa-check"></i> MUST contain at least one lowercase letter<br>
+                              <i class="fa-solid fa-check"></i> MUST contain at least one number<br>
+                              <i class="fa-solid fa-check"></i> MUST contain at least one special character (!”#$%&'()*+,-./:;<=>?@[\]^_`{|}~ )
+                          </div>
+                      </div>
+
+                      <div class="text-center">
+                        <button type="submit" class="registerandlogin" class="button">Register  <i class="fa-solid fa-user-plus"></i></button>
+                      </div>
+                </form>
+            </div>
+          </div>
+        </div>    
+      </div>
+      <div class="gr27e">
+        <div class="d-flex align-items-center justify-content-center pb-0 link">
+          <p class="mb-0 mt-0">{% blocktrans %}<a href="{{ login_url }}">Back To Login</a></p>{% endblocktrans %}
+        </div>
+      </div>
+      <div class="APQi1" >
+        <p class="b_nGN">Download the app</p>
+          <div class="iNy2T">
+            <a aria-label="App Store'dan İndir" class="z1VUo" href="" tabindex="0">
+            <img alt="App Store'dan İndir" class="Rt8TI " src="/static/image/appstore.png"></a>
+            <a aria-label="Google Play'den indir" class="z1VUo" href="" tabindex="0">
+              <img alt="Google Play'den indir" class="Rt8TI " src="/static/image/googleplay.png">
+            </a>
+            </div>
+          </div>
+    </div>
+    
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load bootstrap_tags %}
+{% load account socialaccount %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row d-flex justify-content-center mb-5">
+    <div class="col-12 col-md-8 col-lg-4">
+      <div class="card rounded-3 text-black">
+        <div class="row g-0">
+          <div class="col-lg-12">
+            <div class="card-body p-md-4 mx-md-4">
+              <h4 class="text-center">BodyChallenge</h4>
+
+              <form class="login" method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                {{ form|as_bootstrap }}
+
+                <div class="text-center" >
+                  <button type="submit" class="registerandlogin">{% trans "Log in" %} <i class="fa-solid fa-right-to-bracket"></i></button>
+                  <p class="mb-0 mt-2">           
+                  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a> </div>
+              </form>
+
+
+    </div>
+  </div>
+</div>
+</div>
+<div class="gr27e"><div class="d-flex align-items-center justify-content-center pb-0">
+  <p class="mb-0 mt-0">          
+    No account? <a class="link" href="{{ signup_url }}">{% trans "Sign Up" %}</a></p>
+</div>
+</div>
+  <div class="APQi1" >
+  <p class="b_nGN">Download the app.</p>
+    <div class="iNy2T">
+      <a aria-label="App Store'dan İndir" class="z1VUo" href="" tabindex="0">
+      <img alt="App Store'dan İndir" class="Rt8TI " src="/static/image/appstore.png"></a>
+      <a aria-label="Google Play'den indir" class="z1VUo" href="" tabindex="0">
+        <img alt="Google Play'den indir" class="Rt8TI " src="/static/image/googleplay.png">
+      </a>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

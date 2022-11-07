@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="py-3 text-center container choose-date">
+        <form method="POST" action="{% url 'choose_date' %}">
+                <h5>When would you like to start your plan?</h5>
+                {% csrf_token %}
+                {{ workout_plan_form.as_p }}
+                <button type="submit" class="button">Choose</button>
+
+        </form>
+    </div>
+
+{% endblock %}

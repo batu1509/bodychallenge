@@ -1,0 +1,587 @@
+
+:root {
+    --special: #0a0909;
+    --background: #F7F9FD;
+    --blue: #1148ac;
+    --gray: #14131397;
+  }
+  
+::selection {
+  color: white;
+  background-color: var(--blue);
+}
+  
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+body {
+  line-height: 1.3;
+  font-weight: 400;
+  background-color: #F7F9FD;
+  background-size: cover;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+
+}
+
+
+/* Navbar */
+.nav-link,
+.navbar-brand {
+    color: var(--special) !important;
+    font-size: 103%;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-family: Georgia, 'Times New Roman', Times, serif
+  }
+
+
+.nav-link {
+    margin-left: 15px;
+}
+
+.nav-link:hover, footer a:hover {
+    color: var(--gray) !important;
+}
+
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+  outline: none;
+  box-shadow: none;
+  border: 0;
+}
+
+.navbar-toggler span {
+  margin: 0;
+  padding: 0;
+}
+
+.toggler-icon {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: var(--blue);
+  border-radius: 1px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.middle-bar {
+  margin-top: 0px;
+}
+
+.navbar-toggler.collapsed .top-bar {
+  margin-top: -20px;
+  transform: rotate(0deg);
+}
+
+.navbar-toggler.collapsed .middle-bar {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.navbar-toggler.collapsed .bottom-bar {
+  margin-top: 20px;
+  transform: rotate(0deg);
+}
+
+.navbar-toggler.collapsed .toggler-icon {
+  background: linear-gradient( 200deg, var(--blue) 0%, var(--special) 100% )
+}
+
+
+.dropdown-menu a:hover {
+  background-color: var(--gray);
+}
+
+/* Home page section */
+.home {
+  padding-bottom: 60px;
+  font-size: 100%;
+}
+
+.home .button {
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+.right-alignment {
+  text-align: right;
+}
+
+.list ul {
+  list-style: circle outside none;
+  margin-left: -10px;
+}
+.list ul li {
+  padding-left: 10px;
+}
+
+.home-page-image {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  background-color: var(--background);
+}
+
+.lele {
+  margin-left:-45px;
+  padding-right: 2%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.lelee {
+  margin-left: 30px;
+  padding-left: 10%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+.fa-check {
+  /* margin-left:-60px; */
+  padding-right: 1%;
+}
+
+.alel {
+  font-size: 22px;
+  border-radius: 40px 40px 40px 40px;
+  padding: 12px 50px 12px 50px;
+  color: var(--background);
+  background-color: var(--special);
+  
+}
+
+h4 {
+	font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+	font-size: 24px;
+	color: var(--special);
+}
+
+/* Buttons */
+button, 
+.link-button {
+  padding: 4px 20px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  border-radius: 40px 40px 40px 40px;
+  padding: 12px 50px 12px 50px;
+}
+
+button, 
+.link-button {
+  border: 2px solid var(--blue);
+  background: var(--special);
+  color: var(--background);
+}
+
+.registerandlogin {
+  border: 2px solid var(--blue);
+  background: var(--special);
+  color: var(--background);
+  padding: 5px 20px 5px 20px;
+  border-radius: 60px 30px 60px 30px;
+}
+
+
+/*  */
+
+
+/* sign in  sign up */
+.form-control {
+  /* border-color: var(--special); */
+  color: #262626;
+  color: rgba(var(--i1d,38,38,38),1);
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 20px;
+  max-width: 350px;
+}
+
+.form-control:focus {
+  box-shadow: 1px 1px 10px var(--special);
+  border: 1px solid var(--blue);
+}
+
+.control-label {
+  margin-top: 1.5rem;
+}
+
+a {
+  color: var(--blue);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a:hover, .arrows:hover {
+  color: var(--blue)
+}
+
+button:hover {
+  color: var(--blue) 
+}
+
+.criteria-font-size {
+  font-size: 0.85rem;
+}
+
+
+.gr27e {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #fff;
+  background-color: rgba(var(--d87,255,255,255),1);
+  border: 1px solid #dbdbdb;
+  border: 1px solid rgba(var(--b6a,219,219,219),1);
+  border-radius: 1px;
+  margin: 0 0 10px;
+  padding: 20px 0;
+  position: relative;
+}
+
+/* Download app */
+.APQi1 {
+-webkit-box-align: stretch;
+-webkit-align-items: stretch;
+-ms-flex-align: stretch;
+align-items: stretch;
+border: 0 solid #000;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+-webkit-flex-direction: column;
+-ms-flex-direction: column;
+flex-direction: column;
+-webkit-flex-shrink: 0;
+-ms-flex-negative: 0;
+flex-shrink: 0;
+margin: 0;
+padding: 0;
+position: relative;
+text-align: center;
+}
+
+.b_nGN {
+  color: #262626;
+  color: rgba(var(--i1d,38,38,38),1);
+  font-size: 14px;
+  line-height: 18px;
+  margin: 10px 20px 10px 20px;
+  text-align: center;
+}
+
+.Rt8TI {
+  height: 40px;
+}
+
+.iNy2T {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 10px 0 10px 0;
+}
+
+.z1VUo {
+  margin-right: 8px;
+}
+/* Date picker on planner page*/
+.choose-date label {
+  display: none;
+}
+
+.choose-date p {
+  display: inline-block !important;
+}
+
+.choose-date input[type="date"], 
+.choose-date button {
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  border: 2px solid var(--special);
+  padding: 0.5rem;
+}
+
+.choose-date input[type="date"] {
+  letter-spacing: 0.1rem;
+}
+
+.choose-date input[type="date"]:focus {
+  background-color: var(--background)
+}
+
+.choose-date input[type="date"]::-webkit-calendar-picker-indicator {
+  width: 25px;
+  height: 25px;
+}
+
+.choose-date button {
+  margin-left: 0.5rem;
+  
+}
+
+/* Exercises filter */
+.filter-exercises label {
+  font-size: 1.1rem;
+}
+
+.filter-exercises p {
+  display: inline-block;
+}
+
+.filter-exercises select, .filter-exercises input {
+  border: 1px solid var(--special);
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+}
+
+.filter-exercises select {
+  padding: 0.5rem;
+}
+
+.filter-exercises input {
+  padding: 0.20rem;
+}
+
+.filter-exercises input:focus {
+  background-color: gray
+}
+
+/* Exercise image in exercise detail page */
+.exercise-image {
+  max-width: 100%;
+  border: 1px solid var(--blue);
+}
+
+/* Workout plan table */
+table, table input {
+  text-align: center;
+}
+
+table input {
+  border-bottom: 2px solid var(--special);
+  padding-bottom: 0.5rem !important;
+  width: 100%;
+}
+
+table input:focus {
+  outline: none;
+  border-bottom: 2px dotted var(--blue);
+  background-color: rgba(235, 207, 204, 0.3);
+  border-radius: 10px;
+}
+
+table p {
+  margin-top: 2.25rem;
+  margin-bottom: 0;
+}
+
+table label {
+  display: none;
+}
+
+
+/* Remove the bottom line from the table */
+.no-line {
+  border-style: none !important;
+}
+
+/* Add padding to middle line separating AM & PM */
+.separation-line {
+  padding-bottom: 2rem !important;
+}
+
+th, td {
+  text-align: center;
+}
+
+thead th:first-of-type {
+  visibility: hidden;
+}
+
+/* Edit, add & delete plan option buttons */
+.plan-buttons {
+  display: inline;
+  background-color: var(--special);
+  border-radius: 50%;
+}
+
+.plan-buttons a:hover,
+.arrows:hover {
+  transform: scale(1.3);
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+
+/* Workout planner pages navigation arrows */
+.arrows {
+  display: inline-block;
+  line-height: 0;
+}
+
+.space-out {
+  padding-bottom: 1rem !important;
+}
+
+.left-border {
+  border-left: 1px solid var(--background) !important;
+}
+
+hr {
+  width: 3%;
+  margin: 50px auto;
+}
+
+.geeg {
+  margin-top: 2rem;
+  text-align: left;
+  font-size: 1.15rem;
+  margin-left: -10%
+}
+
+.geegg {
+  margin-top: 2rem;
+  text-align: left;
+  font-size: 1.15rem;
+  margin-left: 10%
+}
+
+.page-link {
+  color: var(--blue) !important;
+  border: 1px solid var(--special);
+}
+
+.page-link:focus {
+  box-shadow: 0 0 0 .15rem var(--special);
+}
+
+.pages-display:hover {
+  background-color: var(--gray) !important;
+
+}
+
+
+/* -------------------------- */
+/*       Media Queries        */
+/* -------------------------- */
+
+@media all and (max-width: 992px) {
+  .filter-exercises input {
+    margin-top: 1rem;
+  }  
+}
+
+@media all and (max-width: 768px) {
+  .filter-exercises label:nth-child(3) {
+    margin-left: 1rem !important;
+  }
+
+  .current-workout-date {
+    font-size: 1.1rem;
+  }
+
+
+  .table th:first-child {
+    position: sticky;
+    left: 0;
+    background-color: var(--gray);
+  }
+}
+
+/* Footer */
+footer {
+  color: grey;
+  margin: 20px auto 0;
+  max-width: 280px;
+  padding: 0 4%;
+}
+
+.copyright {
+  background-color: rgba(178, 36, 36, 0.1);
+}
+
+/* Icons in footer */
+.btn-lg {
+  font-size: 1.4rem !important;
+}
+
+/* Adjustment of page content to place footer at the bottom */
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 10rem; /*  */
+  margin-top: 3rem;
+}
+
+@media all and (max-width: 502px) {
+  /* Style filter buttons */
+  .filter-exercises label,
+  .filter-exercises label:nth-child(3) {
+    margin-left: 0 !important;
+    padding-top: 0.5rem;
+    display: block;
+    font-size: 5.9rem;
+  }
+
+  .filter-exercises input,
+  .filter-exercises select {
+    text-align: center;
+    margin-top: 0 !important;
+  }
+  
+  .lead {
+    margin-bottom: 20 !important;
+  }
+}
+
+/* Hide exercise filter button on smaller screens */
+@media (min-width: 502px) {
+  .hide-div {
+      display: none;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .space-button {
+    margin-top: 1rem;
+    margin-left: 0 !important;
+  }
+}
+
+
+
+

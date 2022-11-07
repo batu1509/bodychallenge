@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="pb-5 container">
+    <div class="text-center">
+            <h4 class="mb-2">400 Bad Request</h4>
+            <h5>Ooops, something went wrong. Your request resulted in an error.</h5>
+            <div>
+                <img src="https://res.cloudinary.com/dgcydxlev/image/upload/v1650968675/404-page_msqfec.png" alt="404 page image - injured woman" style="max-width:80%;">
+            </div>
+            <a href="{% url 'home' %}" class="link-button">Go to the main page</a>
+    </div>
+</div>
+{% endblock %}

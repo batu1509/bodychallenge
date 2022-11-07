@@ -1,0 +1,71 @@
+{% extends 'questionanswer.html' %}
+{% load humanize %}
+{% load static %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% static 'css/all_questions.css' %}">
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="welcome_header">
+  <h2 class="welcome_header__text">Explore Answerly</h2>
+  <a class="welcome_header__button" href="{% url 'questionanswer:createquestion' %}">
+    Ask Question
+  </a>
+</div>
+
+  <div class="questions_container">
+    {% for question in page_obj %}
+      <div class="question bg-white">
+        <div class="question__votes_container">
+          <div class="question__votes">
+            <div class="question__votes--number">{{ question.questionvote.votes }}</div>
+            <div class="question__votes--text">votes</div>
+          </div>
+          <div class="question__answers">
+            <div class="question__answers--number">{{ question.answer_set.all.count }}</div>
+            <div class="question__answers--text">answers</div>
+          </div>
+        </div>
+        <div class="question__summary">
+          <a class="question__title" href="{% url 'questionanswer:question_details' question.id %}">
+            {{question.title}}
+          </a>
+          <div class="question__time_and_author">
+            asked by {{ question.asked_by.get_full_name }} {{ question.created_at | naturaltime }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="pagination_buttons_container">
+    <!-- First and Previous page button-->
+    {% if page_obj.has_previous %}
+      <a class="pagination_button" href="?page=1">First</a>
+      <a class="pagination_button" href="?page= {{ page_obj.previous_page_number }}">Previous</a>
+
+    {% endif %}
+
+    <!-- Surrounding pages buttons-->
+    
+    {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+            <a class="pagination_button current_pagination_button" href="?page= {{ num }}"> {{ num }} </a>
+
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} <!-- Django filter -->
+            <a class="pagination_button" href="?page= {{ num }}"> {{ num }} </a>
+
+        {% endif %}
+
+    {% endfor %}
+
+    <!-- Next and Last page button -->
+    {% if page_obj.has_next %}
+        <a class="pagination_button" href="?page= {{ page_obj.next_page_number }}">Next</a>
+        <a class="pagination_button" href="?page= {{ page_obj.paginator.num_pages }}">Last</a>
+        
+    {% endif %}
+  </div>
+{% endblock content %}
