@@ -64,12 +64,18 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'programs.apps.ProgramsConfig',
     'questionanswer',
-    'moderation',
+    # 'moderation',
     'home',
     
     # 'posts.apps.PostsConfig',
 
 ]
+
+FILTERS_EMPTY_CHOICE_LABEL = 'SELECT'
+
+
+
+
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -185,11 +191,11 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
-### KAYIT İŞLEMLERİ İÇİN GEREKLİ
-SITE_ID = 1 # Sitemize id vermemiz gerekiyor
+### REGİSTER
+SITE_ID = 1 
 
-ACCOUNT_EMAIL_VERIFICATION = 'none' # kayıt esnasında email onayı istiyor musunuz?
-ACCOUNT_EMAIL_REQUIRED = (True,) # kayıt esnasında kullanıcı email adresi vermeli mi?
+ACCOUNT_EMAIL_VERIFICATION = 'none' 
+ACCOUNT_EMAIL_REQUIRED = (True,) 
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 ACCOUNT_PRESERVE_USERNAME_CASING = True
 LOGIN_URL = '/accounts/login'

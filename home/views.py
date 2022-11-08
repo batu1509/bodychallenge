@@ -11,16 +11,12 @@ from users.models import ActivityLevel, Profile
 
 
 def home(request):
-    """
-    A view to display home page
-    """
+
     return render(request, 'anasayfayazi.html')
 
 
 def contact(request):
-    """
-    A view to display user contact form
-    """
+
     if request.method == "POST":
         message = request.POST['message']
 
@@ -39,10 +35,10 @@ def contact(request):
 
         send_mail(
             'Message from ' + message_name +
-            ' (' + message_email + ')',  # email subject
-            message,  # message
-            message_email,  # from email
-            [os.environ.get('EMAIL_HOST_USER')],  # to email
+            ' (' + message_email + ')',  
+            message,  
+            message_email,  
+            [os.environ.get('EMAIL_HOST_USER')],  
         )
 
         context = {

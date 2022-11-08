@@ -28,9 +28,9 @@ urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
 
     
-    path('api-auth/', include('rest_framework.urls')), # Browsable api sayfası için
-    path('api/dj-rest-auth/', include('dj_rest_auth.urls')), # dj-rest-auth ile gelen endpointlerimiz için
-    path('api/dj-rest-auth/registration', include('dj_rest_auth.registration.urls')), # settings.py de 'rest.auth.registration' eklemiştik
+    path('api-auth/', include('rest_framework.urls')), 
+    path('api/dj-rest-auth/', include('dj_rest_auth.urls')), 
+    path('api/dj-rest-auth/registration', include('dj_rest_auth.registration.urls')), 
     # path('api/dj-rest-auth/facebook/', FacebookLogin.as_view(), name='fb_login'),
 
 ]
