@@ -115,9 +115,9 @@ class AddPlan(View):
 
         try:
             workout_plan_id = request.session.get('workout_plan.id')
-            workout_plan = WorkoutExercise.objects.get(pk=workout_plan_id)
+            workout_plan = Workout.objects.get(pk=workout_plan_id)
 
-            day1 = workout_plan.first_day
+            day1 = workout_plan.day
             week = [day1, day1 + timedelta(days=1), day1 + timedelta(days=2), day1 + timedelta(days=3), 
                 day1 + timedelta(days=4), day1 + timedelta(days=5), day1 + timedelta(days=6),]
 

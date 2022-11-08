@@ -124,3 +124,4 @@ class IntervalWorkoutExerciseSetSerializer(serializers.ModelSerializer):
     class Meta:
         model = IntervalWorkoutExerciseSet
         fields = '__all__'
+        
