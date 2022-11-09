@@ -52,7 +52,7 @@ class PlannerView(ListView):
 
     def get(self, request):
 
-        return render(request, 'planner.html')
+        return render(request, 'workout.html')
 
 
 class ChooseDate(View):

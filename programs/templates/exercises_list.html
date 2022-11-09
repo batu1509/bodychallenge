@@ -6,12 +6,11 @@
  <section class="py-3 text-center container">
     <div class="row py-lg-3">
         <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">Exercises</h1>
-            <p class="lead text-muted">Get inspired...</p>
+            <h1 class="fw">Exercises</h1>
+            <br>
+
             <br/>               
         </div>
-        <!-- Collapsible filters menu -->
-        {% comment %} <a href="#"><div class="expand hide-div mb-3 link-button">Find an exercise</div></a> {% endcomment %}
         
         <div class="filter-exercises show-filters">
             <form method="GET">
@@ -30,7 +29,6 @@
         <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
             
-            <!-- Exercise entries -->
             <div class="col">
                 {% for exercise in exercise_page_obj %}
 
@@ -60,7 +58,6 @@
     </div>
   </div>
 
-    <!-- Exercises pagination -->   
     <nav aria-label="Exercises navigation">
       <ul class="pagination justify-content-center pt-3">
         {% if exercise_page_obj.has_previous %}

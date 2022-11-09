@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+
+<div class="updateprofil">
+    
+    <div class="row my-3 p-10">
+        <img style="width: 100px;height:100px;object-fit: cover;border-radius:100px ;" class="rounded-circle account-img" src="{{ user.profil.profilePhoto.url }} " style="cursor: pointer;"/>
+        {{ profile_form.profilePhoto }}
+    </div>
+    {% if user_form.errors %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="form_errors">
+                {% for key, value in user_form.errors.items %}
+                    <strong>{{ value }}</strong>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+    <div class="form-content">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="small mt-1">Username:</label>
+                            {{ user_form.username }}
+                        <label class="small mt-3">Email:</label>
+                            {{ user_form.email }}
+                    </div>
+                    <div class="form-group mt-2">
+                        <a href="">Change Password</a>
+                        
+
+                    </div>
+                    <label class="small mt-3">Bio:</label> {{ profile_form.bio }}
+                    <label class="small mt-3">Weight:</label> {{ profile_form.weight }}
+                    <label class="small mt-3">Height:</label> {{ profile_form.height }}
+                </div>
+            </div>
+            <br><br>
+            <div>
+            <button type="submit" style="padding: 10px 30px 10px 30px;"class="link-button mt-3">Save Changes</button>
+            <button type="reset" style="padding: 10px 30px 10px 30px;"class="link-button mt-3">Reset</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
