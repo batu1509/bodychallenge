@@ -5,14 +5,12 @@ from django.core.mail import send_mail
 import os
 
 # Internal
-from programs.models import Gender, LinearWorkout, Workout, WorkoutExercise, periodization
-from users.models import ActivityLevel, Profile
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 def home(request):
 
-    return render(request, 'anasayfayazi.html')
+    return render(request, 'index.html')
 
 
 def contact(request):

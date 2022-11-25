@@ -1,6 +1,6 @@
 from django.contrib import admin
 from users.models import Profile, ActivityLevel, BodyVitalsLog, MeasurementParameter, MeasurementUnit, SavedRoutine
-from programs.models import Muscle, MuscleGroup, Level, Routine, RoutineGoal, RoutineType, Equipment, Exercise, ExerciseMechanic, ExerciseType, Workout, WorkoutExercise, WorkoutExerciseSet, WorkoutExerciseSetWithReps, Gender, periodization, LinearWorkout, CircularWorkout, repType, IntervalWorkoutExerciseSet
+from programs.models import Muscle, MuscleGroup, Level, Routine, RoutineGoal, RoutineType, Equipment, Exercise, ExerciseMechanic, ExerciseType, Workout, WorkoutExercise, WorkoutExerciseSet, WorkoutExerciseSetWithReps, Gender, LinearWorkout, CircularWorkout, repType, IntervalWorkoutExerciseSet
 
 # Register your models here.
 # class RoutineAdmin(admin.ModelAdmin):
@@ -32,7 +32,6 @@ admin.site.register(WorkoutExercise)
 admin.site.register(WorkoutExerciseSet)
 admin.site.register(WorkoutExerciseSetWithReps)
 admin.site.register(Gender)
-admin.site.register(periodization)
 admin.site.register(LinearWorkout)
 admin.site.register(CircularWorkout)
 admin.site.register(repType)

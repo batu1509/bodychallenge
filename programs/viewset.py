@@ -1,7 +1,7 @@
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser
-from programs.models import Muscle, MuscleGroup, Level, Routine, RoutineGoal, RoutineType, Equipment, Exercise, ExerciseMechanic, ExerciseType, Workout, WorkoutExercise, WorkoutExerciseSet, WorkoutExerciseSetWithReps, Gender, periodization, LinearWorkout, CircularWorkout, repType, IntervalWorkoutExerciseSet
-from programs.serializers import MuscleSerializer, MuscleGroupSerializer, LevelSerializer, RoutineGoalSerializer, RoutineSerializer, RoutineTypeSerializer, EquipmentSerializer, ExerciseSerializer, ExerciseMechanicSerializer, ExerciseTypeSerializer, WorkoutExerciseSerializer, WorkoutExerciseSetSerializer, WorkoutExerciseSetWithRepsSerializer, LinearWorkoutSerializer, CircularWorkoutSerializer, GenderSerializer, repTypeSerializer, WorkoutSerializer, periodizationSerializer, IntervalWorkoutExerciseSetSerializer
+from programs.models import Muscle, MuscleGroup, Level, Routine, RoutineGoal, RoutineType, Equipment, Exercise, ExerciseMechanic, ExerciseType, Workout, WorkoutExercise, WorkoutExerciseSet, WorkoutExerciseSetWithReps, Gender, LinearWorkout, CircularWorkout, repType, IntervalWorkoutExerciseSet
+from programs.serializers import MuscleSerializer, MuscleGroupSerializer, LevelSerializer, RoutineGoalSerializer, RoutineSerializer, RoutineTypeSerializer, EquipmentSerializer, ExerciseSerializer, ExerciseMechanicSerializer, ExerciseTypeSerializer, WorkoutExerciseSerializer, WorkoutExerciseSetSerializer, WorkoutExerciseSetWithRepsSerializer, LinearWorkoutSerializer, CircularWorkoutSerializer, GenderSerializer, repTypeSerializer, WorkoutSerializer, IntervalWorkoutExerciseSetSerializer
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import mixins
@@ -114,11 +114,6 @@ class WorkoutExerciseSetWithRepsViewSet(ModelViewSet):
 class GenderViewSet(ModelViewSet):
     queryset = Gender.objects.all()
     serializer_class = GenderSerializer
-    permission_classes = [IsAdminUserOrReadOnly]
-
-class periodizationViewSet(ModelViewSet):
-    queryset = periodization.objects.all()
-    serializer_class = periodizationSerializer
     permission_classes = [IsAdminUserOrReadOnly]
 
 class CircularWorkoutViewSet(ModelViewSet):

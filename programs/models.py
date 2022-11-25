@@ -1,6 +1,7 @@
 from django.db import models
 from PIL import Image
 from django.contrib.auth.models import User
+import datetime
 # Create your models here.
 
 
@@ -102,13 +103,6 @@ class Routine(models.Model):
     def __str__(self):
         return self.name  
 
-class periodization(models.Model):
-
-    name = models.CharField(max_length=255, null=True)
-
-    def __str__(self):
-        return self.name
-
 class WorkoutTime(models.Model):
     workout_time_name = models.CharField(max_length=50)
 
@@ -116,15 +110,26 @@ class WorkoutTime(models.Model):
         return self.workout_time_name
 
 class Workout(models.Model):
-
+    HOUR_CHOICES = [(datetime.time(hour=x), '{:02d}:00'.format(x)) for x in range(6, 24)]
+    WEEKDAY_CHOICES = (
+        ("Mon", "Monday"),
+        ("Tue", "Tuesday"),
+        ("Wed", "Wednesday"),
+        ("Thu", "Thursday"),
+        ("Fri", "Friday"),
+        ("Sat", "Saturday"),
+        ("Sun", "Sunday"),
+    )
+    
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='workout_plan', null=True)
-    name = models.CharField(max_length=255, null=True)
-    day = models.DateField(null=True)
-    periodization = models.ForeignKey(periodization, on_delete=models.CASCADE, null=True)
-    routineld = models.ForeignKey(Routine, on_delete=models.CASCADE, null=True)
+    muscles = models.ForeignKey(Muscle, on_delete=models.CASCADE, null=True, blank=True, related_name='muscles')
+    weekday = models.CharField(max_length=3, choices=WEEKDAY_CHOICES, null=True)
+    exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE, null=True, related_name="exercise")
+    beginning_time = models.TimeField(choices=HOUR_CHOICES, null=True)
+    ending_time = models.TimeField(choices=HOUR_CHOICES, null=True)
 
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    #     return self.name
 
 class LinearWorkout(models.Model):
 

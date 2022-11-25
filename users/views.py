@@ -6,7 +6,7 @@ import os
 from django.contrib.auth.decorators import login_required
 
 # Internal
-from programs.models import Gender, LinearWorkout, Workout, WorkoutExercise, periodization
+from programs.models import Gender, LinearWorkout, Workout, WorkoutExercise
 from users.models import ActivityLevel, Profile
 from .forms import UpdateUserForm, UpdateProfileForm
 

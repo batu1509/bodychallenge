@@ -14,7 +14,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+# TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -48,26 +48,21 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'django_filters',
-    # 'django_extensions',
+
     'django_forms_bootstrap',
     'rest_framework',
     'rest_framework.authtoken',
-    # 'dj_rest_auth', # pip install dj-rest-auth
-    ### registration end-pointlerimiz için:
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount', # social login (facebook,google v.s)
     'allauth.socialaccount.providers.google',
-    # 'allauth.socialaccount.providers.facebook',
-    'dj_rest_auth.registration', # rest_auth, allauth'u kullanıyor bu uygulama için
-    # 'corsheaders',
+    'dj_rest_auth.registration',
     'users.apps.UsersConfig',
     'programs.apps.ProgramsConfig',
     'questionanswer',
-    # 'moderation',
     'home',
     
-    # 'posts.apps.PostsConfig',
 
 ]
 
@@ -96,7 +91,7 @@ ROOT_URLCONF = '_core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
+        "DIRS": [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

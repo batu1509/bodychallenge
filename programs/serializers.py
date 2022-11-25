@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from programs.models import Muscle, MuscleGroup, Level, Routine, RoutineGoal, RoutineType, Equipment, Exercise, ExerciseMechanic, ExerciseType, Workout, WorkoutExercise, WorkoutExerciseSet, WorkoutExerciseSetWithReps, Gender, periodization, LinearWorkout, CircularWorkout, repType, IntervalWorkoutExerciseSet
+from programs.models import Muscle, MuscleGroup, Level, Routine, RoutineGoal, RoutineType, Equipment, Exercise, ExerciseMechanic, ExerciseType, Workout, WorkoutExercise, WorkoutExerciseSet, WorkoutExerciseSetWithReps, Gender, LinearWorkout, CircularWorkout, repType, IntervalWorkoutExerciseSet
 
 # from django.contrib.auth.models import User
 from django.utils import timezone
@@ -95,11 +95,6 @@ class GenderSerializer(serializers.ModelSerializer):
         model = Gender
         fields = '__all__'
 
-class periodizationSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = periodization
-        fields = '__all__'
 
 class LinearWorkoutSerializer(serializers.ModelSerializer):
 

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block body_class %} bg-gray-100 {% endblock body_class %}
+
+{% block content %}
+  <div class="py-3 pt-7 text-center">
+    <h1>Workout Schedule
+    </h1>
+    <a href="{% url "workout-create" %}" class="btn bg-gradient-primary m-2">Create</a>
+  </div>
+  <div class="card card-body border-0 shadow table-wrapper table-responsive" style="margin: 0 150px 50px 150px">
+    <form action="" method="get" class="form-inline">
+      {{ search_form }}
+      <button class="btn bg-gradient-primary my-auto" type="submit">
+          <i class="fa fa-search"></i>
+      </button>
+    </form>
+      <table class="table table-hover">
+          <thead>
+              <tr>
+                  <th class="border-gray-200 text-center">№</th>
+                  <th class="border-gray-200 text-center">Muscle</th>
+                  <th class="border-gray-200 text-center">Weekday</th>
+                  <th class="border-gray-200 text-center">Beginning</th>
+                  <th class="border-gray-200 text-center">Ending</th>
+                  <th class="border-gray-200 text-center">Programs</th>
+                  <th class="border-gray-200 text-center">Update</th>
+                  <th class="border-gray-200 text-center">Delete</th>
+              </tr>
+          </thead>
+          <tbody>
+              <!-- Item -->
+                {% for workout in workout_list %}
+                  <tr>
+                    <td class="text-center align-middle">
+                      {{ workout.id }}
+                    </td>
+                    <td class="text-center align-middle">
+                      {{ workout.muscles }}
+                    </td>
+                    <td class="text-center align-middle">
+                      {{ workout.weekday }}
+                    </td>
+                    <td class="text-center align-middle">
+                      {{ workout.beginning_time }}
+                    </td>
+                    <td class="text-center align-middle">
+                      {{ workout.ending_time }}
+                    </td>
+                    <td class="text-center align-middle">
+                      <a href="{% url "workout-programs" pk=workout.id %}" class="btn bg-gradient-rs">Programs</a>
+                    </td>
+                    <td class="text-center align-middle">
+                      <a href="{% url "workout-update" pk=workout.id %}" class="btn bg-gradient-primary">Update</a>
+                    </td>
+                    <td class="text-center align-middle">
+                      <a href="{% url "workout-delete" pk=workout.id %}" class="btn bg-gradient-secondary">Delete</a>
+                    </td>
+                  </tr>
+                {% endfor %}
+          </tbody>
+      </table>
+  </div>
+{% endblock %}
